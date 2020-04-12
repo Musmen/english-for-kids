@@ -1,26 +1,26 @@
-import { CATEGORIES_LIST, CLASS_NAMES } from './helper';
-import MainPageCard from './mainPageCard';
+import { CLASS_NAMES } from './helper';
+import CategoryPageCard from './categoryPageCard';
 
-export default class MainPageCardsList {
-  constructor(container, callBack) {
+export default class CategoryPageCardsList {
+  constructor(container, categoryData, callBack) {
     this.container = container;
+    this.categoryData = categoryData;
     this.callBack = callBack;
     this.list = null;
 
     this.onClickHandler = this.onClickHandler.bind(this);
-    // this.render = this.render.bind(this);
     this.init();
   }
 
   onClickHandler(event) {
     if (!event.target.className.match(CLASS_NAMES.CARD_TARGET)) return;
     event.preventDefault();
-    const selectedCategory = event.target.closest(`.${CLASS_NAMES.CARD_LINK}`).dataset.category;
+    const selectedCardAudioSrc = event.target.closest(`.${CLASS_NAMES.CARD_LINK}`).dataset.audio;
 
-    this.remove();
+    // this.remove(); // todo тут еще обработчик кнопки поворота...
     // this.removeHandlers();
 
-    this.callBack(selectedCategory);
+    this.callBack(selectedCardAudioSrc);
   }
 
   addHandlers() {
@@ -35,8 +35,8 @@ export default class MainPageCardsList {
     // const list = document.createElement('ul');
     // list.className = CLASS_NAMES.MAIN_PAGE_CARDS_LIST;
 
-    CATEGORIES_LIST.forEach((category) => {
-      const card = new MainPageCard(this.list, category.title, category.imageSrc);
+    this.categoryData.forEach((cardData) => {
+      const card = new CategoryPageCard(this.list, cardData);
       card.render();
     });
 
@@ -50,7 +50,7 @@ export default class MainPageCardsList {
 
   init() {
     const list = document.createElement('ul');
-    list.className = CLASS_NAMES.MAIN_PAGE_CARDS_LIST;
+    list.className = CLASS_NAMES.CATEGORY_PAGE_CARDS_LIST;
     this.list = list;
     this.addHandlers();
 

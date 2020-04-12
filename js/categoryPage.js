@@ -1,7 +1,7 @@
 import CARDS_DATA from './data/cards';
 
 const categoryPage = () => {
-  const cardsListElement = document.querySelector('.cards__list');
+  const cardsListElement = document.querySelector('.cards__container');
   // const navigationList = document.querySelector('.navigation__list');
 
   // navigationList.addEventListener('click', (event) => {

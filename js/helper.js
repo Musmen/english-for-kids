@@ -1,43 +1,44 @@
 export const CATEGORIES_LIST = [
   {
     title: 'action (set a)',
-    image: 'img/dive.jpg',
+    imageSrc: 'img/dive.jpg',
   },
   {
     title: 'action (set b)',
-    image: 'img/play.jpg',
+    imageSrc: 'img/play.jpg',
   },
   {
     title: 'animal (set a)',
-    image: 'img/dog.jpg',
+    imageSrc: 'img/dog.jpg',
   },
   {
     title: 'animal (set b)',
-    image: 'img/turtle.jpg',
+    imageSrc: 'img/turtle.jpg',
   },
   {
     title: 'clothes',
-    image: 'img/shirt.jpg',
+    imageSrc: 'img/shirt.jpg',
   },
   {
     title: 'emotions',
-    image: 'img/happy.jpg',
+    imageSrc: 'img/happy.jpg',
   },
   {
     title: 'weather',
-    image: 'img/lion.jpg', // todo
+    imageSrc: 'img/lion.jpg', // todo
   },
   {
     title: 'transport',
-    image: 'img/horse.jpg', // todo
+    imageSrc: 'img/horse.jpg', // todo
   },
 ];
 
 export const CLASS_NAMES = {
-  MAIN_PAGE_TARGET: 'card',
-  MAIN_PAGE_CARD: 'cards__item',
+  CARD: 'cards__item',
+  CARD_TARGET: 'card',
+  CARD_LINK: 'card__link',
   MAIN_PAGE_CARDS_LIST: 'cards__list cards__list_main-page list',
-  MAIN_PAGE_CARD_LINK: 'card__link',
+  CATEGORY_PAGE_CARDS_LIST: 'cards__list cards__list_category-page list',
 };
 
 export const ENTER_KEY = 'Enter';
