@@ -18,8 +18,6 @@
   width: 100vw;
   height: 100vh;
 
-  font-family: Verdana, Helvetica, sans-serif;
-  font-weight: 400;
   color: white;
 
   background-color: rgba(153, 159, 167, 0.8);
@@ -29,18 +27,6 @@
   &:hover,
   &:active {
     outline: 0;
-  }
-
-  @media (max-width: 900px) {
-    font-size: 14px;
-  }
-
-  @media (max-width: 700px) {
-    font-size: 12px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 10px;
   }
 }
 
@@ -54,9 +40,9 @@
           flex-direction: column;
   width: 50%;
   max-width: 900px;
-  min-height: 100px;
+  min-height: 150px;
   max-height: 80vh;
-  padding: 10px;
+  padding: 20px;
 
   background-color: #f06c64;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -67,38 +53,50 @@
   overflow: hidden;
 }
 
-.popup__description {
-  margin-top: 0;
+.popup__status,
+.popup__lead {
+  font-family: "Lato-Black", "Arial", "sans-serif";
+  font-weight: 900;
+  color: #666d89;
 }
 
-.popup__description,
-.popup__message {
-  color: white;
+.popup__status {
   text-align: center;
+}
+
+.popup__status,
+.popup__subject,
+.popup__message {
   word-wrap: break-word;
+}
+
+.popup__subject,
+.popup__message {
+  display: block;
+  max-height: 20vh;
+
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
 }
 
 .popup__close-button {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
-      align-self: flex-end;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25px;
-  height: 25px;
-  margin: 5px;
+      align-self: center;
+  display: block;
+  width: 15%;
+  min-width: 60px;
+  margin: 20px 0;
+  padding: 10px;
 
-  font-family: "Arial", "sans-serif";
-  font-weight: 400;
-  color: white;
+  font-family: "Lato-Black", "Arial", "sans-serif";
+  font-weight: 900;
+  color: #666d89;
 
   border: 0;
-  border-radius: 50%;
-
-  background-color: #666d89;
-
-  transition: all 0.2s ease-out;
+  border-radius: 20px;
 
   &:focus,
   &:hover,
@@ -109,6 +107,7 @@
     outline: 0;
 
     cursor: pointer;
+
+    @include transition;
   }
 }
-

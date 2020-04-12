@@ -48,6 +48,16 @@ const config = {
           loader: 'file-loader',
           options: {
             outputPath: './assets/fonts/',
+            name: '[name].[ext]',
+          }
+        }]
+      },
+      {
+        test: /\.(mp3|wav)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: './assets/audio/',
           }
         }]
       },
@@ -89,6 +99,12 @@ const config = {
       {
         from: "./assets/favicon/",
         to: "./assets/favicon/",
+      },
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: "./app-data/",
+        to: "./app-data/",
       },
     ])
   ],

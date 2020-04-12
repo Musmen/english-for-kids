@@ -7,9 +7,186 @@
     <title>English-For-Kids</title>
   </head>
 
-  <body class="main-page">
-    <div>
-      <p>Hello, world!</p>
+  <body class="body">
+    <div class="centralizer">
+      <header class="header">
+        <button id="burger" class="burger__button button"></button>
+
+        <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </header>
+
+      <div class="burger__layout" tabindex="0">
+        <div class="burger__wrapper">
+          <nav id="navigation" class="navigation">
+            <ul id="mainNavigation" class="navigation__list list">
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Main Page</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Action (set A)</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Action (set B)</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Animal (set A)</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Animal (set B)</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Clothes</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Emotions</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Weather</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Transport</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">Statistics</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <main class="main">
+        <button id="successButton">Success!</button>
+        <button id="correctButton">Correct!</button>
+        <button id="rotateButton">Rotate!</button>
+
+        <div class="cards__container">
+          <!-- <ul class="cards__list cards__list_main-page list">
+            <li class="cards__item">
+              <a class="card__link link" href="#">
+                <img  class="card__image" src="./app-data/img/dive.jpg">
+                <h3 class="card__title">Action (set A)</h3>
+              </a>
+            </li>
+            <li class="cards__item">
+              <a class="card__link link" href="#">
+                <img  class="card__image" src="./app-data/img/play.jpg">
+                <h3 class="card__title">Action (set B)</h3>
+              </a>
+            </li>
+            <li class="cards__item">
+              <a class="card__link link" href="#">
+                <img  class="card__image" src="./app-data/img/dog.jpg">
+                <h3 class="card__title">Animal (set A)</h3>
+              </a>
+            </li>
+            <li class="cards__item">
+              <a class="card__link link" href="#">
+                <img  class="card__image" src="./app-data/img/turtle.jpg">
+                <h3 class="card__title">Animal (set B)</h3>
+              </a>
+            </li>
+            <li class="cards__item">
+              <a class="card__link link" href="#">
+                <img  class="card__image" src="./app-data/img/shirt.jpg">
+                <h3 class="card__title">Clothes</h3>
+              </a>
+            </li>
+            <li class="cards__item">
+              <a class="card__link link" href="#">
+                <img  class="card__image" src="./app-data/img/happy.jpg">
+                <h3 class="card__title">Emotions</h3>
+              </a>
+            </li>
+            <li class="cards__item">
+              <a class="card__link link" href="#">
+                <img  class="card__image" src="./app-data/img/dive.jpg">
+                <h3 class="card__title">Weather</h3>
+              </a>
+            </li>
+            <li class="cards__item">
+              <a class="card__link link" href="#">
+                <img  class="card__image" src="./app-data/img/dive.jpg">
+                <h3 class="card__title">Transport</h3>
+              </a>
+            </li>
+          </ul> -->
+        </div>
+      </main>
+
+      <footer class="footer">
+        by @Musmen. RSSchool 2020 Q1
+      </footer>
     </div>
+
+    <template id="cardTemplate">
+      <li class="cards__item">
+        <a class="card__link" href="#">
+          <div class="card__front">
+            <img class="card__image" alt="image">
+            <p class="card__word"></p>
+            <!-- <p class="card__translation"></p> -->
+             <!-- <audio class="card__audio" controls></audio> -->
+          </div>
+          <div class="card__back">
+            <img class="card__image" alt="image">
+            <!-- <p class="card__word"></p> -->
+            <p class="card__translation"></p>
+            <!-- <audio class="card__audio" controls></audio> -->
+          </div>
+        </a>
+      </li>
+    </template>
+
+    <!-- <template id="burger__template">
+      <div class="burger__layout" tabindex="0">
+        <div class="burger__wrapper">
+          <nav id="navigation" class="navigation">
+            <ul id="mainNavigation" class="navigation__list list">
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#">home</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#services">services</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#portfolio">portfolio</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#about">about</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link link" href="#feedback">contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </template> -->
+
+      <!--Bacground color-->
+        <!-- <div class="card-up indigo lighten-1 purple-gradient"> -->
+        <!-- </div> -->
+
+        <!--Avatar-->
+        <!-- <div class="avatar mx-auto white"> -->
+            <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg"">
+        </div>
+
+        <div class="card-body">
+            Name
+            <h4 class="card-title">Anna Doe</h4>
+            <hr>
+            Quotation
+            <p>
+                <i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
+        </div>
+
+      </div> -->
   </body>
 </html>
