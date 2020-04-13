@@ -1,11 +1,11 @@
-export const createMainPageCard = (cardTitle, imageSrc) => `
-  <a class="card__link link" href="#" data-category="${cardTitle}">
-    <img  class="card__image" src="./app-data/${imageSrc}">
-    <h3 class="card__title">${cardTitle.toUpperCase()}</h3>
+export const createMainCard = (categoryData) => `
+  <a class="card__link link" href="#" data-category="${categoryData.title}">
+    <img  class="card__image" src="./app-data/${categoryData.imageSrc}">
+    <h3 class="card__title">${categoryData.title.toUpperCase()}</h3>
   </a>
 `;
 
-export const createCategoryPageCard = (cardData) => {
+export const createCategoryCard = (cardData) => {
   const {
     word,
     translation,
@@ -14,7 +14,7 @@ export const createCategoryPageCard = (cardData) => {
   } = cardData;
 
   return `
-    <a class="card__link" href="#" data-audio="${audioSrc}">
+    <a class="card__link link" href="#" data-audio="${audioSrc}">
       <div class="card__front">
         <img class="card__image" src="./app-data/${imageSrc}">
         <p class="card__word">${word.toUpperCase()}</p>
@@ -37,12 +37,4 @@ export const enableDocumentScroll = (className = 'overflow-hidden') => {
 
 export const disableTab = (event) => {
   if (event.key === 'Tab') event.preventDefault();
-};
-
-export const isDocumentBottomReached = () => {
-  const currentScrollY = window.pageYOffset;
-  const viewHeight = document.documentElement.clientHeight;
-  const maxScrollY = document.documentElement.scrollHeight;
-
-  return (currentScrollY + viewHeight >= maxScrollY);
 };

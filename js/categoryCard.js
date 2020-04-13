@@ -1,7 +1,7 @@
-import { createCategoryPageCard } from './utils';
 import { CLASS_NAMES } from './helper';
+import { createCategoryCard } from './utils';
 
-export default class CategoryPageCard {
+export default class CategoryCard {
   constructor(container, cardData) {
     this.container = container;
     this.cardData = cardData;
@@ -10,7 +10,7 @@ export default class CategoryPageCard {
   render() {
     const card = document.createElement('li');
     card.className = CLASS_NAMES.CARD;
-    card.innerHTML = createCategoryPageCard(this.cardData);
+    card.innerHTML = createCategoryCard(this.cardData);
     this.container.append(card);
   }
 }

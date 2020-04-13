@@ -1,68 +1,51 @@
 import { disableTab, disableDocumentScroll, enableDocumentScroll } from './utils';
-import { ELEMENTS } from './helper';
-import Popup from './popup';
 
-export default class BurgerMenu extends Popup {
-  constructor(container = null) {
-    super(container);
+export default class BurgerMenu {
+  constructor(container = null, onBurgerMenuClick) {
+    this.container = container;
+    this.onBurgerMenuClick = onBurgerMenuClick;
+
     this.isOpen = false;
     this.burgerMenuButton = null;
+
     this.disableTabBined = disableTab.bind(this);
+    this.onBurgerMenuButtonClick = this.onBurgerMenuButtonClick.bind(this);
+
+    this.init();
   }
-
-  // build() {
-  //   // const logo = ELEMENTS.HEADER.querySelector('.logo').cloneNode(true);
-  //   // const navigation = ELEMENTS.HEADER.querySelector('#navigation').cloneNode(true);
-  //   // navigation.classList.add('display-flex');
-
-  //   const popup = document.querySelector('#burger__template').content.cloneNode(true);
-  //   const layout = popup.querySelector('.burger__layout');
-  //   const wrapper = popup.querySelector('.burger__wrapper');
-  //   // wrapper.append(logo);
-  //   // wrapper.append(navigation);
-
-  //   layout.addEventListener('click', this.burgerMenuClickHandler.bind(this));
-
-  //   return popup;
-  // }
 
   open() {
     const { container } = this;
-    // const popup = this.build();
 
-    // container.append(popup);
-
-    const popupLayout = container.querySelector('.burger__layout');
-    popupLayout.classList.toggle('open');
-    popupLayout.focus();
-    popupLayout.addEventListener('keydown', this.disableTabBined);
-    popupLayout.addEventListener('click', this.burgerMenuClickHandler);
+    const layout = container.querySelector('.burger__layout');
+    layout.classList.toggle('open');
+    layout.focus();
+    layout.addEventListener('keydown', this.disableTabBined);
+    layout.addEventListener('click', this.onBurgerMenuClick);
 
     disableDocumentScroll('overflow-hidden-burger');
     this.isOpen = true;
-    this.rotateBurgerMenuButtonIcon();
+    this.rotateBurgerMenuIcon();
   }
 
   close() {
     const { container } = this;
-    const popup = container.querySelector('.burger__layout');
-    popup.classList.toggle('open');
-    // popup.left = '-100vw';
-    // popup.remove();
+    const layout = container.querySelector('.burger__layout');
+    layout.classList.toggle('open');
 
     enableDocumentScroll('overflow-hidden-burger');
     this.isOpen = false;
-    this.rotateBurgerMenuButtonIcon();
+    this.rotateBurgerMenuIcon();
 
-    popup.removeEventListener('keydown', this.disableTabBined);
-    popup.removeEventListener('click', this.burgerMenuClickHandler);
+    layout.removeEventListener('keydown', this.disableTabBined);
+    layout.removeEventListener('click', this.onBurgerMenuClick);
   }
 
-  rotateBurgerMenuButtonIcon() {
+  rotateBurgerMenuIcon() {
     this.burgerMenuButton.classList.toggle('burger-rotate');
   }
 
-  burgerMenuButtonClickHandler() {
+  onBurgerMenuButtonClick() {
     if (this.isOpen) {
       this.close();
     } else {
@@ -70,20 +53,8 @@ export default class BurgerMenu extends Popup {
     }
   }
 
-  burgerMenuClickHandler(event) {
-    // debugger;
-    if (!event.target.classList.contains('navigation__link')
-      && !event.target.className.includes('logo')
-      && !event.target.classList.contains('burger__layout')) return;
-    this.close();
-  }
-
   init() {
-    // debugger;
-    this.burgerMenuButtonClickHandler = this.burgerMenuButtonClickHandler.bind(this);
-    this.burgerMenuClickHandler = this.burgerMenuClickHandler.bind(this);
-
     this.burgerMenuButton = document.querySelector('#burger');
-    this.burgerMenuButton.addEventListener('click', this.burgerMenuButtonClickHandler);
+    this.burgerMenuButton.addEventListener('click', this.onBurgerMenuButtonClick); // ToDo remove Listener before unload
   }
 }

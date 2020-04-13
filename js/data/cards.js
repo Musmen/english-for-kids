@@ -299,8 +299,22 @@ const CARDS_DATA = {
       audioSrc: 'audio/laugh.mp3',
     },
   ],
-  weather: [], // todo
-  transport: [], // todo
+  weather: [
+    {
+      word: 'shoe',
+      translation: 'туфли',
+      imageSrc: 'img/shoe.jpg',
+      audioSrc: 'audio/shoe.mp3',
+    },
+  ], // todo
+  transport: [
+    {
+      word: 'horse',
+      translation: 'лошадь',
+      imageSrc: 'img/horse.jpg',
+      audioSrc: 'audio/horse.mp3',
+    },
+  ], // todo
 };
 
 export default CARDS_DATA;
