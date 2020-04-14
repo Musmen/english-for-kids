@@ -1,3 +1,4 @@
+import { CLASS_NAMES } from './helper';
 import { disableTab, disableDocumentScroll, enableDocumentScroll } from './utils';
 
 export default class BurgerMenu {
@@ -14,6 +15,22 @@ export default class BurgerMenu {
     this.init();
   }
 
+  removeActiveState() {
+    this.container.querySelectorAll(`.${CLASS_NAMES.BURGER_MENU_LINK}`)
+      .forEach((link) => {
+        link.classList.remove(CLASS_NAMES.BURGER_MENU_LINK_ACTIVE);
+      });
+  }
+
+  setActiveState(target) {
+    target.classList.add(CLASS_NAMES.BURGER_MENU_LINK_ACTIVE);
+  }
+
+  toggleStates(target) {
+    this.removeActiveState();
+    this.setActiveState(target);
+  }
+
   open() {
     const { container } = this;
 
@@ -23,7 +40,7 @@ export default class BurgerMenu {
     layout.addEventListener('keydown', this.disableTabBined);
     layout.addEventListener('click', this.onBurgerMenuClick);
 
-    disableDocumentScroll('overflow-hidden-burger');
+    // disableDocumentScroll('overflow-hidden');
     this.isOpen = true;
     this.rotateBurgerMenuIcon();
   }
@@ -33,7 +50,7 @@ export default class BurgerMenu {
     const layout = container.querySelector('.burger__layout');
     layout.classList.toggle('open');
 
-    enableDocumentScroll('overflow-hidden-burger');
+    // enableDocumentScroll('overflow-hidden');
     this.isOpen = false;
     this.rotateBurgerMenuIcon();
 

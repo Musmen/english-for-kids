@@ -6,10 +6,10 @@ const categoryPage = () => {
     cardsListElement.classList.toggle('rotate');
   };
 
-  const switcher = document.querySelector('.onoffswitch-checkbox');
-  switcher.addEventListener('change', () => {
-    cardsListElement.classList.toggle('rotate');
-  });
+  // const switcher = document.querySelector('.onoffswitch-checkbox');
+  // switcher.addEventListener('change', () => {
+  //   cardsListElement.classList.toggle('rotate');
+  // });
 };
 
 export default categoryPage;

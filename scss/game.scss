@@ -1,0 +1,9 @@
+.play .game__controls {
+  display: flex;
+  justify-content: center;
+}
+
+.cards__list_main-page + .game__controls,
+.game__controls {
+  display: none;
+}

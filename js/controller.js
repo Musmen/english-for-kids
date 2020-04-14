@@ -6,6 +6,8 @@ export default class Controller {
     this.view = view;
 
     this.onBurgerMenuClick = this.onBurgerMenuClick.bind(this);
+    this.onSwitcherChange = this.onSwitcherChange.bind(this);
+    this.onCardMouseLeave = this.onCardMouseLeave.bind(this);
     this.onMainCardClick = this.onMainCardClick.bind(this);
     this.onCategoryCardClick = this.onCategoryCardClick.bind(this);
   }
@@ -18,7 +20,10 @@ export default class Controller {
     this.view.burgerMenu.close();
     if (isMenuLinkClicked) {
       const selectedCategory = event.target.closest(`.${CLASS_NAMES.LINK}`).dataset.category; // элементы повторения
+      this.view.burgerMenu.toggleStates(event.target.closest(`.${CLASS_NAMES.LINK}`));
+
       this.model.currentCategory = selectedCategory;
+      this.view.currentCategoryTitle.innerText = this.model.currentCategory;
       this.view.currentList.remove();
 
       switch (selectedCategory) {
@@ -40,34 +45,50 @@ export default class Controller {
     }
   }
 
+  onSwitcherChange() {
+    document.body.classList.toggle('play');
+  }
+
+  onCardMouseLeave({ target }) {
+    this.view.returnCard(target);
+  }
+
   onMainCardClick(event) {
-    if (!event.target.className.match(CLASS_NAMES.CARD_TARGET)) return;
+    if (!event.target.closest(`.${CLASS_NAMES.LINK}`)) return;
     event.preventDefault();
 
     this.view.currentList.remove();
     const selectedCategory = event.target.closest(`.${CLASS_NAMES.LINK}`).dataset.category;
+    this.view.burgerMenu.toggleStates(this.view.burgerMenu.container.querySelector(`[data-category="${selectedCategory}"]`));
     this.model.currentCategory = selectedCategory;
+    this.view.currentCategoryTitle.innerText = this.model.currentCategory;
     const categoryData = this.model.getCategoryData();
     this.view.createCategoryList(categoryData, this.onCategoryCardClick);
     this.view.currentList.render(); // render selected category list
   }
 
   onCategoryCardClick(event) {
-    if (!event.target.className.match(CLASS_NAMES.CARD_TARGET)) return;
+    if (!event.target.closest(`.${CLASS_NAMES.LINK}`)) return;
     event.preventDefault();
+
+    if (event.target.closest('.card__button')) {
+      this.view.turnCard(event.target.closest(`.${CLASS_NAMES.LINK}`));
+      return;
+    }
 
     const selectedCardAudioSrc = event.target.closest(`.${CLASS_NAMES.LINK}`).dataset.audio;
     const audio = new Audio(`./../app-data/${selectedCardAudioSrc}`);
     audio.play(); // play word pronunciation;
-
-    return this; // todo тут еще обработчик кнопки поворота... А это убрать
   }
 
   init() {
+    this.view.initSwitcher(this.onSwitcherChange);
     this.view.createBurgerMenu(this.onBurgerMenuClick);
 
     this.view.createMainList(this.model.categoriesData, this.onMainCardClick);
     this.view.currentList.render();
-    this.model.currentCategory = 'main page';
+
+    this.model.currentCategory = 'main page'; // элементы повторения
+    this.view.currentCategoryTitle.innerText = this.model.currentCategory;
   }
 }

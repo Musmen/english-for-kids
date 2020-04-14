@@ -303,7 +303,7 @@ const CARDS_DATA = {
     {
       word: 'shoe',
       translation: 'туфли',
-      imageSrc: 'img/shoe.jpg',
+      imageSrc: 'img/cloud.jpg',
       audioSrc: 'audio/shoe.mp3',
     },
   ], // todo

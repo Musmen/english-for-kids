@@ -18,6 +18,7 @@ export const createCategoryCard = (cardData) => {
       <div class="card__front">
         <img class="card__image" src="./app-data/${imageSrc}">
         <p class="card__word">${word.toUpperCase()}</p>
+        <button class="card__button button">R</button>
       </div>
       <div class="card__back">
         <img class="card__image" src="./app-data/${imageSrc}">

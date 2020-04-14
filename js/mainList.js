@@ -25,7 +25,7 @@ export default class MainList {
       card.render();
     });
 
-    this.container.append(this.list);
+    this.container.prepend(this.list);
   }
 
   remove() {
@@ -35,7 +35,7 @@ export default class MainList {
 
   init() {
     const list = document.createElement('ul');
-    list.className = CLASS_NAMES.MAIN_PAGE_CARDS_LIST;
+    list.className = CLASS_NAMES.MAIN_LIST;
     this.list = list;
     this.addHandlers();
   }
